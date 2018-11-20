@@ -32,3 +32,13 @@ export function fetchPages(site, page=null){
     return ret
   })
 }
+
+
+export function fetchCandidates(page){
+  const url = contentsUrl + "?url=" + page
+  return fetch(url)
+  .then(function(response){
+    let ret = response.json()
+    return ret
+  })
+}

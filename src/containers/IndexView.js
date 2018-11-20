@@ -4,6 +4,8 @@ import SplitPane from 'react-split-pane'
 import 'styles/splitPane.css'
 import { SitesView } from 'containers/SitesView'
 import { PagesView } from 'containers/PagesView'
+import { CandidatesView } from 'containers/CandidatesView'
+import 'styles/IndexView.css'
 
 
 
@@ -12,15 +14,22 @@ export class IndexView extends Component {
     super(props);
     this.state = {
       isLoading : false,
-      selectedSite : ""
+      selectedSite : "",
+      selectedPage : ""
     }
 
     this.successFetch = this.successFetch.bind(this)
     this.setSelectedSite = this.setSelectedSite.bind(this)
+    this.setSelectedPage = this.setSelectedPage.bind(this)
+    this.setUrls = this.setUrls.bind(this)
   }
 
   setSelectedSite(site){
     this.setState({selectedSite : site})
+  }
+
+  setSelectedPage(page){
+    this.setState({selectedPage : page})
   }
 
   successFetch(res){
@@ -33,22 +42,32 @@ export class IndexView extends Component {
     api.fetchContents().then(this.successFetch)
   }
 
+  setUrls(res){
+    this.props.setContents(res)
+  }
+
   render() {
+    console.log("indexview")
+    console.log("state")
+    console.log(this.state)
     if(this.state.isLoading){
       return( <h1> isloading </h1>)
     }else{
       return (
-        <SplitPane split="vertical" defaultSize="20%">
-          <div>
-            <SitesView setSite={this.setSelectedSite}/>
-          </div>
-          <SplitPane split="vertical" defaultSize="80%">
-            <div overflow='auto' height='50pt'>
-              <PagesView site={this.state.selectedSite}/>
-            </div>
             <div>
-              <SplitPane split="horizontal" defaultSize="80%">
-                <div>
+              <div className="left-pane">
+                <SitesView setSite={this.setSelectedSite}/>
+              </div>
+              <div className="center-pane">
+                <PagesView site={this.state.selectedSite}
+                           setPage={this.setSelectedPage}/>
+              </div>
+              <div className="right-pane">
+                <div className="top-pane">
+                  <CandidatesView page={this.state.selectedPage}
+                                  setUrls={this.setUrls}/>
+                </div>
+                <div className="under-pane">
                   <button onClick={() =>{this.props.changePage('slider')}}>
                     uooooo
                   </button>
@@ -56,10 +75,8 @@ export class IndexView extends Component {
                     fetchContents
                   </button>
                 </div>
-              </SplitPane>
+              </div>
             </div>
-          </SplitPane>
-        </SplitPane>
       );
     }
   }

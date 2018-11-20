@@ -9,22 +9,23 @@ export class PagesView extends Component {
     super(props);
     this.state = {
       isLoading : false,
-      site : this.props.site,
       pages : []
     }
 
     this.successFetch = this.successFetch.bind(this)
+    this.pageClick = this.pageClick.bind(this)
   }
 
   componentDidMount(){
   }
 
   componentWillReceiveProps(nextProps){
-    this.fetchPages(nextProps.site)
+    if(nextProps.site != this.props.site){
+      this.fetchPages(nextProps.site)
+    }
   }
 
   successFetch(res){
-    console.log(res)
     this.setState({isLoading : false})
     this.setState({pages : res})
   }
@@ -32,6 +33,14 @@ export class PagesView extends Component {
   fetchPages(site){
     this.setState({isLoading : true})
     api.fetchPages(site).then(this.successFetch)
+  }
+
+  pageClick(page){
+    this.props.setPage(page)
+  }
+
+  thumbClick(page){
+    
   }
 
   render() {
@@ -45,7 +54,9 @@ export class PagesView extends Component {
         <div>
           <ul>
           {this.state.pages.map( (page, i) => {
-            return <Page page={page}/>
+            return <Page page={page}
+                         pageClick={this.pageClick}
+                         thumbClick={this.thumbClick}/>
           })}
           </ul>
         </div>
@@ -58,8 +69,10 @@ export class PagesView extends Component {
 function Page(props){
   return(
   <ul>
-    <a><img src={props.page.img}/></a>
-    <a>
+    <a onClick={() => {props.thumbClick(props.page.link)}}>
+      <img src={props.page.img}/>
+    </a>
+    <a onClick={() => {props.pageClick(props.page.link)}}>
       <h3>{props.page.title}</h3>
     </a>
     <p>{props.page.desc}</p>

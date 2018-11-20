@@ -1,17 +1,27 @@
 .left-pane {
     float: left;
     height: 100%;
-    width: 20%;
+    width: 18%;
 }
 
 .right-pane {
     float: left;
     height: 100%;
-    width: 20%;
+    width: 18%;
+}
+
+.top-pane {
+    border-bottom: solid 1px;
+}
+.under-pane {
+    height: 25%;
+    bottom: 0%;
 }
 
 .center-pane {
     float: left;
     height: 100%;
     width: 60%;
+    border-left: solid 1px;
+    border-right: solid 1px;
 }

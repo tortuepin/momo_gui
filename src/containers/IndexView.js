@@ -6,6 +6,7 @@ import { SitesView } from 'containers/SitesView'
 import { PagesView } from 'containers/PagesView'
 
 
+
 export class IndexView extends Component {
   constructor(props) {
     super(props);
@@ -33,27 +34,28 @@ export class IndexView extends Component {
   }
 
   render() {
-    console.log(this.state.selectedSite)
     if(this.state.isLoading){
       return( <h1> isloading </h1>)
     }else{
       return (
         <SplitPane split="vertical" defaultSize="20%">
-            <div>
-              <SitesView setSite={this.setSelectedSite}/>
-            </div>
+          <div>
+            <SitesView setSite={this.setSelectedSite}/>
+          </div>
           <SplitPane split="vertical" defaultSize="80%">
-            <PagesView site={this.state.selectedSite}/>
+            <div overflow='auto' height='50pt'>
+              <PagesView site={this.state.selectedSite}/>
+            </div>
             <div>
               <SplitPane split="horizontal" defaultSize="80%">
-          <div>
-            <button onClick={() =>{this.props.changePage('slider')}}>
-              uooooo
-            </button>
-            <button onClick={() =>{this.fetchContents()}}>
-              fetchContents
-            </button>
-          </div>
+                <div>
+                  <button onClick={() =>{this.props.changePage('slider')}}>
+                    uooooo
+                  </button>
+                  <button onClick={() =>{this.fetchContents()}}>
+                    fetchContents
+                  </button>
+                </div>
               </SplitPane>
             </div>
           </SplitPane>

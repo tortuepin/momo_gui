@@ -24,16 +24,17 @@ export class PagesView extends Component {
   }
 
   successFetch(res){
+    console.log(res)
     this.setState({isLoading : false})
-    this.setState({sites : res['contents']})
+    this.setState({pages : res})
   }
 
   fetchPages(site){
-    this.setState({pages : [api.fetchPages(site)]})
+    this.setState({isLoading : true})
+    api.fetchPages(site).then(this.successFetch)
   }
 
   render() {
-    console.log("render page")
     if(this.state.pages.length === 0){
       return (<h1> select site </h1>)
     }
@@ -42,11 +43,27 @@ export class PagesView extends Component {
     }else{
       return (
         <div>
-          {this.state.pages.map( (site, i) => {
-            return <a>{site}</a>
+          <ul>
+          {this.state.pages.map( (page, i) => {
+            return <Page page={page}/>
           })}
+          </ul>
         </div>
       );
     }
   }
+}
+
+
+function Page(props){
+  return(
+  <ul>
+    <a><img src={props.page.img}/></a>
+    <a>
+      <h3>{props.page.title}</h3>
+    </a>
+    <p>{props.page.desc}</p>
+    <hr/>
+  </ul>
+  )
 }

@@ -1,5 +1,6 @@
 const sitesUrl = 'http://127.0.0.1:8000/sitelist'
 const contentsUrl = 'http://127.0.0.1:8000/imagelist'
+const pagesUrl = 'http://127.0.0.1:8000/pagelist'
 
 
 export function fetchContents(){
@@ -21,9 +22,13 @@ export function fetchSites(){
 export function fetchPages(site, page=null){
   let url
   if(page){
-    url = sitesUrl + "/" + site + "?page=" + page
+    url = pagesUrl + "/" + site + "?page=" + page
   }else{
-    url = sitesUrl + "/" + site
+    url = pagesUrl + "/" + site
   }
-  return url
+  return fetch(url)
+  .then(function(response){
+    let ret = response.json()
+    return ret
+  })
 }

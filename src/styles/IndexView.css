@@ -1,0 +1,17 @@
+.left-pane {
+    float: left;
+    height: 100%;
+    width: 20%;
+}
+
+.right-pane {
+    float: left;
+    height: 100%;
+    width: 20%;
+}
+
+.center-pane {
+    float: left;
+    height: 100%;
+    width: 60%;
+}

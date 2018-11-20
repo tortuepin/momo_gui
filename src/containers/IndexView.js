@@ -18,7 +18,6 @@ export class IndexView extends Component {
       selectedPage : ""
     }
 
-    this.successFetch = this.successFetch.bind(this)
     this.setSelectedSite = this.setSelectedSite.bind(this)
     this.setSelectedPage = this.setSelectedPage.bind(this)
     this.setUrls = this.setUrls.bind(this)
@@ -30,16 +29,6 @@ export class IndexView extends Component {
 
   setSelectedPage(page){
     this.setState({selectedPage : page})
-  }
-
-  successFetch(res){
-    this.setState({isLoading : false})
-    this.props.setContents(res['contents'])
-  }
-
-  fetchContents(){
-    this.setState({isLoading : true})
-    api.fetchContents().then(this.successFetch)
   }
 
   setUrls(res){
@@ -69,10 +58,7 @@ export class IndexView extends Component {
                 </div>
                 <div className="under-pane">
                   <button onClick={() =>{this.props.changePage('slider')}}>
-                    uooooo
-                  </button>
-                  <button onClick={() =>{this.fetchContents()}}>
-                    fetchContents
+                    Go to SlideShow
                   </button>
                 </div>
               </div>

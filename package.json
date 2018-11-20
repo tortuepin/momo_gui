@@ -3,14 +3,18 @@
   "version": "0.1.0",
   "private": true,
   "homepage": ".",
-  "main" : "./src/main.js",
+  "main": "./src/main.js",
   "dependencies": {
     "electron": "^3.0.7",
     "react": "^16.6.0",
     "react-dom": "^16.6.0",
     "react-redux": "^5.1.0",
+    "react-router-dom": "^4.3.1",
     "react-scripts": "2.1.1",
-    "redux": "^4.0.1"
+    "react-slick": "^0.23.2",
+    "react-split-pane": "^0.1.84",
+    "redux": "^4.0.1",
+    "slick-carousel": "^1.8.1"
   },
   "scripts": {
     "start": "./node_modules/.bin/electron .",

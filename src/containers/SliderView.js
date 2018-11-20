@@ -8,13 +8,13 @@ export class SliderView extends Component {
     super(props);
   }
 
-  componentDidMount(){
+  async componentDidMount(){
     if(this.props.contents.length > 0){
-      this.props.contents.forEach((image) => {
-        const img = new Image();
+      for(let image of this.props.contents){
+        await wait(1000)
+        const img = new Image()
         img.src = image
-        wait(100)
-      })
+      }
     }
   }
 

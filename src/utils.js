@@ -12,5 +12,4 @@ function sleepByPromise(time){
 
 export async function wait(time) {
   await sleepByPromise(time);
-  console.log("sleep")
 }

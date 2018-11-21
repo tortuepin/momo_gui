@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Image } from "component/image"
+import { SlideImage } from "component/image"
 
 export class Slider extends Component {
   constructor(props) {
@@ -11,7 +11,7 @@ export class Slider extends Component {
   }
 
   render_one(src) {
-    return (<Image src={src}/>)
+    return (<SlideImage src={src}/>)
   }
 
   next_image() {
@@ -24,7 +24,7 @@ export class Slider extends Component {
       this.setState({num : this.state.num - 1})
     }
   }
-  
+
   onKeyDown(e) {
     if (e.key === "ArrowLeft") {
       this.prev_image()
@@ -42,7 +42,6 @@ export class Slider extends Component {
   }
 
   render() {
-
     return (
       <div onClick={(e) => this.onClick(e)} onKeyDown={(e) => this.onKeyDown(e)} tabIndex="-1">
         {this.render_one(this.props.contents[this.state.num])}

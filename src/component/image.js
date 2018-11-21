@@ -1,25 +1,25 @@
 import React from 'react'
-import { render } from 'react-dom'
+import ReactDOM, { render } from 'react-dom'
 
-class Image extends React.Component {
+class SlideImage extends React.Component {
   constructor(props) {
     super(props);
   }
 
+  getImageWidth() {
+
+  }
   getWindowWidth() { 
     return window.innerWidth
   }
+
   getWindowHeight() { 
     return  window.parent.screen.availHeight - window.parent.screenTop
   }
 
-
   render() {
-    console.log(this.getWindowHeight())
-    //return <div><img src={this.props.src} width={this.getWindowHeight()}></img></div>
-    return <img src={this.props.src}  height={this.getWindowHeight()+"pt"}/>//width={this.getWindowWidth()+"pt"}></img>
+    return <img src={this.props.src}  height={this.getWindowHeight()+"pt"}/>
   }
 }
 
-export { Image }
-
+export { SlideImage }

@@ -14,7 +14,8 @@ class SlideImage extends React.Component {
   }
 
   getWindowHeight() { 
-    return  window.parent.screen.availHeight - window.parent.screenTop
+    //return  window.parent.screen.availHeight - window.parent.screenTop
+    return window.innerHeight
   }
 
   render() {

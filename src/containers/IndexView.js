@@ -60,6 +60,9 @@ export class IndexView extends Component {
                   <button onClick={() =>{this.props.changePage('slider')}}>
                     Go to SlideShow
                   </button>
+                  <button onClick={() =>{this.setUrls(['http://waral.club/wp-content/uploads/2018/09/cat_0163.jpg', 'http://waral.club/wp-content/uploads/2018/09/cat_0154.jpg', 'http://waral.club/wp-content/uploads/2018/08/cat_0153.jpg'])}}>
+                    dev set urls
+                  </button>
                 </div>
               </div>
             </div>

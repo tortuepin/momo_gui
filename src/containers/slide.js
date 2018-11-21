@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Image } from "component/image"
 
 export class Slider extends Component {
   constructor(props) {
@@ -10,7 +11,7 @@ export class Slider extends Component {
   }
 
   render_one(src) {
-    return <img src={src}></img>
+    return (<Image src={src}/>)
   }
 
   next_image() {

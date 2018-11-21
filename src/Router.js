@@ -34,7 +34,9 @@ export class Router extends Component {
   router() {
     switch(this.state.uri){
       case 'slider':
-        return(<SliderView contents={this.state.contents}/>)
+        return(<SliderView contents={this.state.contents}
+                changePage={(u) => { this.changePage(u); }}
+                />)
       default:
         return(<IndexView
                 changePage={(u) => { this.changePage(u); }}

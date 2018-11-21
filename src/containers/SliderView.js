@@ -20,7 +20,8 @@ export class SliderView extends Component {
 
   render() {
     return (
-      <Slider contents={this.props.contents} />
+      <Slider contents={this.props.contents}
+              changePage={(u) => {this.props.changePage(u) }}/>
     );
   }
 }

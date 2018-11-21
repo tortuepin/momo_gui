@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { SlideImage } from "component/image"
+import { SettingMenu } from "containers/SettingMenu"
 
 export class Slider extends Component {
   constructor(props) {
@@ -43,8 +44,11 @@ export class Slider extends Component {
 
   render() {
     return (
-      <div onClick={(e) => this.onClick(e)} onKeyDown={(e) => this.onKeyDown(e)} tabIndex="-1">
-        {this.render_one(this.props.contents[this.state.num])}
+      <div>
+        <div onClick={(e) => this.onClick(e)} onKeyDown={(e) => this.onKeyDown(e)} tabIndex="-1">
+          {this.render_one(this.props.contents[this.state.num])}
+        </div>
+        <SettingMenu changePage={(u) => { this.props.changePage(u) }}/>
       </div>
     );
   }

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "styles/SettingMenu.css"
+import { InputSlider } from "component/InputSlider"
 
 export class SettingMenu extends Component {
   constructor(props) {
@@ -8,14 +9,15 @@ export class SettingMenu extends Component {
     this.play = this.play.bind(this)
     this.stop = this.stop.bind(this)
     this.state = {
-      playFlag : -1
+      playFlag : -1,
+      duration : 1000
     }
   }
 
   play(){
     console.log("play")
     this.setState({playFlag : 1})
-    this.props.startShow(1000)
+    this.props.startShow(this.state.duration)
   }
   stop(){
     console.log("stop")
@@ -42,6 +44,12 @@ export class SettingMenu extends Component {
     return (
       <div class="float-button">
         <p class="plus">+</p>
+        <p>
+          <InputSlider
+            duration={this.state.duration}
+            changeDuration={(x) => {this.setState({duration : x})}}
+          />
+        </p>
         <p onClick={p_func} class="play">{p_str}</p>
         <p onClick={this.back} class="back">Back</p>
       </div>

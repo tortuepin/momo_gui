@@ -9,11 +9,13 @@ export class PagesView extends Component {
     super(props);
     this.state = {
       isLoading : false,
-      pages : []
+      pages : [],
+      page : 1
     }
 
     this.successFetch = this.successFetch.bind(this)
     this.pageClick = this.pageClick.bind(this)
+    this.pager = this.pager.bind(this)
   }
 
   componentDidMount(){
@@ -30,9 +32,9 @@ export class PagesView extends Component {
     this.setState({pages : res})
   }
 
-  fetchPages(site){
+  fetchPages(site, page=null){
     this.setState({isLoading : true})
-    api.fetchPages(site).then(this.successFetch)
+    api.fetchPages(site, page).then(this.successFetch)
   }
 
   pageClick(page){
@@ -41,6 +43,13 @@ export class PagesView extends Component {
 
   thumbClick(page){
     
+  }
+
+  pager(p){
+    if(p > 0){
+      this.setState({page: p})
+      this.fetchPages(this.props.site, p)
+    }
   }
 
   render() {
@@ -59,12 +68,21 @@ export class PagesView extends Component {
                          thumbClick={this.thumbClick}/>
           })}
           </ul>
+          <Pager pager={this.pager} page={this.state.page}/>
         </div>
       );
     }
   }
 }
 
+function Pager(props){
+  return(
+    <div>
+    <button onClick={() => {props.pager(props.page-1)}}> 前ページ </button>
+    <button onClick={() => {props.pager(props.page+1)}}> 次ページ </button>
+    </div>
+  )
+}
 
 function Page(props){
   return(

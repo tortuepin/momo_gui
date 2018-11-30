@@ -37,7 +37,7 @@ export class SitesView extends Component {
       return (
         <div>
           {this.state.sites.map( (site, i) => {
-            return <a onClick={() => {this.props.setSite(site)}}>{site}</a>
+            return <p><a onClick={() => {this.props.setSite(site)}}>{site}</a></p>
           })}
         </div>
       );

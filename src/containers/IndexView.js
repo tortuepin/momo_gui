@@ -36,9 +36,6 @@ export class IndexView extends Component {
   }
 
   render() {
-    console.log("indexview")
-    console.log("state")
-    console.log(this.state)
     if(this.state.isLoading){
       return( <h1> isloading </h1>)
     }else{

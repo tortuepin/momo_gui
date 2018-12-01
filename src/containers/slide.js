@@ -7,7 +7,8 @@ export class Slider extends Component {
     super(props);
     this.state = {
       num : 0,
-      play : 0
+      play : 0,
+      isPlay : 0
     }
     this.contents_num = this.props.contents.length
     this.startShow = this.startShow.bind(this)
@@ -29,11 +30,13 @@ export class Slider extends Component {
   }
 
   play(time) {
+    console.log("play!!")
     return new Promise(resolve => {
       setTimeout(resolve, time)
     })
     .then(() => {
       if(this.state.play > 0){
+        this.setState({isPlay : 0})
         this.next_image()
       }
     })
@@ -62,7 +65,8 @@ export class Slider extends Component {
   }
 
   render() {
-    if(this.state.play > 0){
+    if(this.state.isPlay == 0 && this.state.play > 0){
+      this.setState({isPlay : 1})
       this.play(this.state.play)
     }
     return (

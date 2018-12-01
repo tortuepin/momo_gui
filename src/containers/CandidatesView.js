@@ -30,7 +30,7 @@ export class CandidatesView extends Component {
     this.setState({isLoading : false})
     const can = this.state.candidates.concat(res['urls'])
     this.setState({candidates : can})
-    const t = this.state.titles.concat(this.props.page.title)
+    const t = this.state.titles.concat({title:this.props.page.title, num:res['urls'].length})
     this.setState({titles : t})
     this.props.setUrls(this.state.candidates)
   }
@@ -51,8 +51,11 @@ export class CandidatesView extends Component {
         <div>
         <ul>
         {this.state.titles.map( (t, i) => {
-          return <Titles title={t}/>
+          return <Titles title={t['title']} num={t['num']}/>
         })}
+        <div style={{float: "right"}}>
+        {this.state.candidates.length}
+        </div>
         </ul>
         </div>
       );
@@ -61,7 +64,7 @@ export class CandidatesView extends Component {
 }
 
 function Titles(props){
-  return (<li> {props.title} </li>)
+  return (<li> {props.title}--{props.num}枚</li>)
 }
 function Candidate(props){
   return (<li> {props.can} </li>)

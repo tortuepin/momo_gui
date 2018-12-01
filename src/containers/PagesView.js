@@ -88,7 +88,7 @@ function Page(props){
   return(
   <ul>
     <a onClick={() => {props.thumbClick(props.page)}}>
-      <img src={props.page.img}/>
+      <img src={props.page.img} height="400px"/>
     </a>
     <a onClick={() => {props.pageClick(props.page)}}>
       <h3>{props.page.title}</h3>

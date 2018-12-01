@@ -15,7 +15,7 @@ export class IndexView extends Component {
     this.state = {
       isLoading : false,
       selectedSite : "",
-      selectedPage : ""
+      selectedPage : {}
     }
 
     this.setSelectedSite = this.setSelectedSite.bind(this)

@@ -9,7 +9,8 @@ export class CandidatesView extends Component {
     super(props);
     this.state = {
       isLoading : false,
-      candidates : []
+      candidates : [],
+      titles : []
     }
 
     this.successFetch = this.successFetch.bind(this)
@@ -19,9 +20,9 @@ export class CandidatesView extends Component {
   }
 
   componentWillReceiveProps(nextProps){
-    if(nextProps.page != this.props.page){
-      console.log("receive")
-      this.fetchUrls(nextProps.page)
+    if(nextProps.page.link != this.props.page.link){
+      console.log(this.props.page)
+      this.fetchUrls(nextProps.page.link)
     }
   }
 
@@ -29,6 +30,8 @@ export class CandidatesView extends Component {
     this.setState({isLoading : false})
     const can = this.state.candidates.concat(res['urls'])
     this.setState({candidates : can})
+    const t = this.state.titles.concat(this.props.page.title)
+    this.setState({titles : t})
     this.props.setUrls(this.state.candidates)
   }
 
@@ -38,9 +41,6 @@ export class CandidatesView extends Component {
   }
 
   render() {
-    console.log("render candidates")
-    console.log(this.state)
-    console.log(this.props.page)
     if(this.state.candidates.length === 0){
       return (<h1> select page </h1>)
     }
@@ -50,8 +50,8 @@ export class CandidatesView extends Component {
       return (
         <div>
         <ul>
-        {this.state.candidates.map( (can, i) => {
-          return <Candidate can={can}/>
+        {this.state.titles.map( (t, i) => {
+          return <Titles title={t}/>
         })}
         </ul>
         </div>
@@ -60,6 +60,9 @@ export class CandidatesView extends Component {
   }
 }
 
+function Titles(props){
+  return (<li> {props.title} </li>)
+}
 function Candidate(props){
   return (<li> {props.can} </li>)
 }

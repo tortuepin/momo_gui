@@ -87,10 +87,10 @@ function Pager(props){
 function Page(props){
   return(
   <ul>
-    <a onClick={() => {props.thumbClick(props.page.link)}}>
+    <a onClick={() => {props.thumbClick(props.page)}}>
       <img src={props.page.img}/>
     </a>
-    <a onClick={() => {props.pageClick(props.page.link)}}>
+    <a onClick={() => {props.pageClick(props.page)}}>
       <h3>{props.page.title}</h3>
     </a>
     <p>{props.page.desc}</p>

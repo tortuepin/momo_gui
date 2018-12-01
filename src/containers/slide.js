@@ -72,7 +72,7 @@ export class Slider extends Component {
         </div>
         <SettingMenu changePage={(u) => { this.props.changePage(u) }}
                      startShow={(t) => { this.startShow(t) }}
-                     num={this.state.num}
+                     num={this.state.num + 1}
                      contents_num={this.contents_num}/>
       </div>
     );

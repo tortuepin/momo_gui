@@ -6,19 +6,6 @@ export class SettingMenu extends Component {
   constructor(props) {
     super(props);
     this.back = this.back.bind(this)
-    this.play = this.play.bind(this)
-    this.stop = this.stop.bind(this)
-  }
-
-  play(){
-    console.log("play")
-    this.setState({playFlag : 1})
-    this.props.startShow(this.props.duration)
-  }
-  stop(){
-    console.log("stop")
-    this.setState({playFlag : -1})
-    this.props.startShow(0)
   }
 
   back(){
@@ -39,7 +26,7 @@ export class SettingMenu extends Component {
         <p>
           <InputSlider
             duration={this.props.duration}
-            changeDuration={(x) => {this.setDuration({duration : x})}}
+            changeDuration={(x) => {this.props.setDuration(x)}}
           />
         </p>
         <p onClick={this.props.startShow} class="play">{p_str}</p>

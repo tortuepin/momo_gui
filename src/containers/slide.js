@@ -81,7 +81,6 @@ export class Slider extends Component {
   }
 
   render() {
-    console.log(this.state)
     if(this.state.isPlay == 0 && this.state.play > 0){
       this.setState({isPlay : 1})
       this.play(this.state.play)

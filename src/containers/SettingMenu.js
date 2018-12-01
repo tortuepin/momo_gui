@@ -52,6 +52,7 @@ export class SettingMenu extends Component {
         </p>
         <p onClick={p_func} class="play">{p_str}</p>
         <p onClick={this.back} class="back">Back</p>
+        <p> {this.props.num}/{this.props.contents_num}</p>
       </div>
     );
   }

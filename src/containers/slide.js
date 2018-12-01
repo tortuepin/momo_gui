@@ -74,7 +74,11 @@ export class Slider extends Component {
   }
 
   onClick(e) {
-    this.next_image();
+    if(e.clientX < window.innerWidth/2){
+      this.prev_image()
+    }else{
+      this.next_image();
+    }
   }
 
   componentDidMount() {
